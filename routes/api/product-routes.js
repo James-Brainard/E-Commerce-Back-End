@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { get } = require('lodash');
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
@@ -20,9 +21,13 @@ router.get('/', async (req, res) => {
 // get one product
 router.get('/:id', async (req, res) => {
   try {
-    const getOneProduct = await Product.findOne({
+    const getOneProduct = await Product.findByPk(req.params.id,{
       include: [{ model: Category}, {model: Tag, through: ProductTag}],
     });
+    if (!getOneProduct) {
+      res.status(400).json({ message: 'No Product found with this id!'});
+      return;
+    }
     res.status(200).json(getOneProduct);
   } catch (err) {
     res.status(500).json(err);
@@ -121,6 +126,7 @@ router.delete('/:id', async (req, res) => {
       res.status(400).json({ message: 'No Product found with this id!'});
       return;
     }
+    return res.status(200).json(deleteProductById);
   } catch(err) {
     res.status(500).json(err);
   }
