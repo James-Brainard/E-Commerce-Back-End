@@ -52,6 +52,6 @@
   https://drive.google.com/file/d/1y7m3U29QtYhUP1-KviNyL0PJTSCAiSjv/view
 
   ## Question
-  Please refer to my github for other awesome project! https://github.com/james-brainard
+  Please refer to my github for other awesome projects! https://github.com/james-brainard
 
   If you have any questions regarding this application or any others. You can reach me at: james.brainard2@aol.com
